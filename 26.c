@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 /*26. Write a program to execute an executable program.
 a. use some executable program

@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 /*
 11. Write a program to open a file, duplicate the file descriptor and append the file with both the
 descriptors and check whether the file is updated properly or not.

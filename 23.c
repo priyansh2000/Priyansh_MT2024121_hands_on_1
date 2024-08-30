@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 /*
 23. Write a program to create a Zombie state of the running program

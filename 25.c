@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 /*
 25. Write a program to create three child processes. The parent should wait for a particular child (use

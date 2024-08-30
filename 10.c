@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 /*
 10. Write a program to open a file with read write mode, write 10 bytes, move the file pointer by 10
 bytes (use lseek) and write again 10 bytes.

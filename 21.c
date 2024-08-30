@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 //21. Write a program, call fork and print the parent and child process id.
 

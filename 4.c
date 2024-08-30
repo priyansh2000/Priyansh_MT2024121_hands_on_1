@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 
 /*Write a program to open an existing file with read write mode. Try O_EXCL flag also.

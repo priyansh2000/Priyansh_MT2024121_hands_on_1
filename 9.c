@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 /*
 9. Write a program to print the following information about a given file.

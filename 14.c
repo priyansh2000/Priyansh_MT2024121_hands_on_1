@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 /*
 14 Write a program to find the type of a file.
 a. Input should be taken from command line.

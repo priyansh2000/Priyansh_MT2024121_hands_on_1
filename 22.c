@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 /*
 22. Write a program, open a file, call fork, and then write to the file by both the child as well as the

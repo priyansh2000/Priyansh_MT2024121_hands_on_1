@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 // 12. Write a program to find out the opening mode of a file. Use fcntl.
 
 

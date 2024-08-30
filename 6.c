@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 // Question: Write a program to take input from STDIN and display on STDOUT. Use only read/write system calls
 
 

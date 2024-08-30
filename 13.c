@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 /*
 13. Write a program to wait for a STDIN for 10 seconds using select. Write a proper print statement to

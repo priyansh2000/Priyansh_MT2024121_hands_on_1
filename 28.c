@@ -1,5 +1,5 @@
 //Priyansh Rai
-// MT2024021
+// MT2024121
 
 //28. Write a program to get maximum and minimum real time priority.
 

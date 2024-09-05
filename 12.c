@@ -96,3 +96,9 @@ HII PRIYANSH THIS SIDE
 priyansh@priyansh-ASUS-TUF-Gaming-A15-FA506II-FA506II:~/hands_on_1$ gcc -o 12op 12.c
 priyansh@priyansh-ASUS-TUF-Gaming-A15-FA506II-FA506II:~/hands_on_1$ ./12op 12.txt
 The file has been opened with the flags : O_RDONLY*/
+
+/*
+status = fcntl(fileDescriptor, F_GETFL);:
+
+    This line calls the fcntl function with the F_GETFL command to retrieve the file status flags of the file associated with the fileDescriptor.
+    status will contain the file status flags, which may include flags such as O_RDONLY (read-only), O_WRONLY (write-only), O_RDWR (read/write), O_APPEND (append mode), and others.*/

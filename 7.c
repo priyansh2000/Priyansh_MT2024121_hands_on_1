@@ -10,60 +10,19 @@
 #include <stdio.h>       // For standard I/O functions like printf() and perror()
 
 // Note: This program is limited by the buffer size; if the file exceeds the buffer size, not all contents will be copied.
-int main(int argc, char *argv[]) {
+int main(int c,char *argv[]){
+char buffer[200];
+if(c!=3){printf("Wrong number of arguments\n"); exit(-1);}
+int fd = open(argv[1],O_RDONLY,0400);
+if(fd==-1) printf("file not opened");
+int ret;
+int fd2 =open(argv[2],O_RDWR|O_CREAT|O_EXCL,0600);
+if(fd2==-1) printf("file cannot be copied");
+while((ret=read(fd,buffer,sizeof(buffer)))>0)
+write(fd2,buffer,ret);
 
-    char *srcFilePath;
-    char *destFilePath;
-
-    int srcFileDesc, destFileDesc;  // File descriptors for source and destination
-    ssize_t bytesRead;              // Number of bytes read from the source file
-    ssize_t bytesWritten;           // Number of bytes written to the destination file
-
-    char buffer[100];  // Buffer to hold chunks of data during file copy
-
-    // Ensure that the correct number of arguments are provided
-    if (argc != 3) {
-        fprintf(stderr, "Usage: %s <source_file> <destination_file>\n", argv[0]);
-        return 1;
-    }
-
-    srcFilePath = argv[1];
-    destFilePath = argv[2];
-
-    // Open the source file in read-only mode
-    srcFileDesc = open(srcFilePath, O_RDONLY);
-    // Create or open the destination file in write-only mode; give the user full permissions
-    destFileDesc = open(destFilePath, O_CREAT | O_WRONLY, S_IRUSR | S_IWUSR | S_IXUSR);
-
-    // Check for errors during file opening
-    if (srcFileDesc == -1 || destFileDesc == -1) {
-        perror("Error opening source or destination file");
-        return 1;
-    }
-
-    // Copy the data from the source file to the destination file in chunks
-    while ((bytesRead = read(srcFileDesc, buffer, sizeof(buffer))) > 0) {
-        bytesWritten = write(destFileDesc, buffer, bytesRead);
-        if (bytesWritten == -1) {
-            perror("Error writing to destination file");
-            close(srcFileDesc);
-            close(destFileDesc);
-            return 1;
-        }
-    }
-
-    // Check for errors during reading
-    if (bytesRead == -1) {
-        perror("Error reading from source file");
-    } else {
-        printf("File copy completed successfully!\n");
-    }
-
-    // Close file descriptors
-    close(srcFileDesc);
-    close(destFileDesc);
-
-    return 0;
+close(fd);
+close(fd2);
 }
 /*
 priyansh@priyansh-ASUS-TUF-Gaming-A15-FA506II-FA506II:~/hands_on_1$ nano source_7.txt
@@ -81,3 +40,46 @@ priyansh@priyansh-ASUS-TUF-Gaming-A15-FA506II-FA506II:~/hands_on_1$ cat dest_7.t
 HI THIS THE SOURCE CONTENT TO BE COPIED
 
 */
+
+/*
+0 (First Digit): This digit affects the special modes (setuid, setgid, and sticky bit), which are not relevant here, so it's set to 0.
+4 (Second Digit): This digit controls the permissions for the owner of the file.
+
+    4: Read permission.
+
+0 (Third Digit): This digit controls the permissions for the group associated with the file.
+
+    0: No permissions.
+
+0 (Fourth Digit): This digit controls the permissions for others (anyone else who is not the owner or in the group).
+
+    0: No permissions.*/
+
+    /*
+    _RDWR
+
+    Description: Opens the file for both reading and writing.
+    Usage: open(argv[2], O_RDWR | O_CREAT | O_EXCL, 0600);
+    Effect: The file can be read from and written to. If the file is opened successfully, the file descriptor allows both operations.
+
+3. O_CREAT
+
+    Description: If the file does not exist, this flag tells the open() system call to create the file.
+    Usage: open(argv[2], O_RDWR | O_CREAT | O_EXCL, 0600);
+    Effect: If the file specified by argv[2] does not exist, it will be created with the permissions specified by the third argument (0600 in this case).
+
+4. O_EXCL
+
+    Description: When used with O_CREAT, this flag ensures that the open() call will fail if the file already exists.
+    Usage: open(argv[2], O_RDWR | O_CREAT | O_EXCL, 0600);
+    Effect: If the file specified by argv[2] already exists, open() will return -1 and set errno to EEXIST. This is useful for ensuring that files aren't accidentally overwritten.
+
+Permissions (0600)
+
+When creating a file with O_CREAT, you also need to specify the file permissions. These are provided as the third argument to open() if O_CREAT is used:
+
+    0600: This sets the file's permissions to allow the owner to read and write to the file, but no one else (neither group nor others) can access the file.
+        0: No permissions for others.
+        6: Read and write permissions for the owner (4 for read + 2 for write = 6).
+        0: No permissions for the group.
+        0: No permissions for others.*/

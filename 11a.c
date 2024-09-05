@@ -47,7 +47,9 @@ void main(int argc, char *argv[])
 }
 /*Duplicate the File Descriptor:
 
-    dup(fileDescriptor) duplicates the file descriptor, returning a new file descriptor (dupFileDescriptor) that refers to the same file description (the underlying open file). Both file descriptors share the same file offset, file status flags, etc.
+    dup(fileDescriptor) duplicates the file descriptor, returning a new file descriptor (dupFileDescriptor) 
+    that refers to the same file description (the underlying open file). Both file descriptors share the same file
+     offset, file status flags, etc.
 
 Write Using Both Descriptors:
 

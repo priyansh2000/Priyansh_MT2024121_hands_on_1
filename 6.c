@@ -5,32 +5,20 @@
 
 #include <unistd.h> // Import for read & write system call
 #include <stdio.h>  // Import for perror function
+#include<fcntl.h>
 
-void main()
-{
-    char *buffer[100];
-    int readByteCount, writeByteCount;
-    while (1)
-    {
-        readByteCount = read(STDIN_FILENO, buffer, 1);
-        writeByteCount = write(STDOUT_FILENO, buffer, 1);
-
-        if (readByteCount == -1 || writeByteCount == -1)
-        {
-            perror("Error while reading from STDIN / writing to STDOUT");
-            break;
-        }
-    }
-}
-
+int main(){
+char buff[100];
+int ret = read(0,buff,sizeof(buff));
+write(1,buff,ret);
+}/*
+ priyansh@priyansh-ASUS-TUF-Gaming-A15-FA506II-FA506II:~/hands_on_1$ gcc -o 6op 6.c
+ priyansh@priyansh-ASUS-TUF-Gaming-A15-FA506II-FA506II:~/hands_on_1$ ./6op 
+wfffrferf
+wfffrferf
+*/
 
 /*
-Read and Write Loop:
-
-    The loop continuously reads one byte from STDIN and writes that byte to STDOUT.
-    If read() returns -1, an error occurred during reading, and similarly, if write() returns -1, an error occurred during writing.
-    The loop will continue indefinitely until interrupted or an error occurs.
-
-Error Handling:
-
-    The error handling with perror is correctly implemented. If either read() or write() fails, perror will output an appropriate error message, and the loop breaks.*/
+input from the standard input (file descriptor 0, which typically corresponds to the keyboard) 
+and writes it to the standard output (file descriptor 1, which typically corresponds to the terminal screen).
+*/
